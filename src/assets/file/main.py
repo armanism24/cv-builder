@@ -71,6 +71,7 @@ def download_docx():
 
     # Add Professional Summary
     summary_p = doc.add_paragraph('Professional Summary')
+    summary_p.bold = True
     summary_p.style.font.size = Pt(head_size)
     insertHR(summary_p)
     summary_dp = doc.add_paragraph(data.get('description', ' '))
@@ -79,6 +80,7 @@ def download_docx():
 
     # Add Professional Skills
     p = doc.add_paragraph('Professional Skills')
+    p.bold = True
     p.style.font.size = Pt(head_size)
     insertHR(p)
     p = doc.add_paragraph()
@@ -88,6 +90,7 @@ def download_docx():
 
     # Add Work History
     p = doc.add_paragraph('Work History')
+    p.bold = True
     p.style.font.size = Pt(head_size)
     insertHR(p)
     for company in data.get('work_history'):
@@ -124,6 +127,7 @@ def download_docx():
 
     # Add Education and Qualifications
     edu = doc.add_paragraph('Education and Qualifications')
+    edu.bold = True
     edu.style.font.size = Pt(head_size)
     insertHR(edu)
     for company in data.get('education'):
@@ -140,6 +144,7 @@ def download_docx():
 
     # Add Training and Certification
     edu = doc.add_paragraph('Training and Certification')
+    edu.bold = True
     edu.style.font.size = Pt(head_size)
     insertHR(edu)
     for cert in data.get('certificates'):
@@ -154,6 +159,7 @@ def download_docx():
 
     # Add Awards and Recognitions
     edu = doc.add_paragraph('Awards and Recognitions')
+    edu.bold = True
     edu.style.font.size = Pt(head_size)
     insertHR(edu)
     for cert in data.get('awards'):
@@ -165,6 +171,7 @@ def download_docx():
 
     # Add Publications and Presentations
     edu = doc.add_paragraph('Publications and Presentations')
+    edu.bold = True
     edu.style.font.size = Pt(head_size)
     insertHR(edu)
     for cert in data.get('publications'):
@@ -176,6 +183,8 @@ def download_docx():
 
     # Add Patents
     edu = doc.add_paragraph('Patents')
+    edu.bold = True
+
     edu.style.font.size = Pt(head_size)
     insertHR(edu)
     for cert in data.get('patents'):
