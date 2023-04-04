@@ -44,50 +44,50 @@ const Client = () => {
   const [coverletterData, setCoverletterData] = useState([]);
 
 
-  const downloadCVHandler = async () => {
-    const data = {
-        "first_name": personalInfoData?.first_name,
-        "last_name": personalInfoData?.last_name,
-        "phone": personalInfoData?.phone,
-        "email": personalInfoData?.email,
-        "location": personalInfoData?.location,
-        "portfolio": personalInfoData?.portfolio,
-        "description": personalInfoData?.description,
-        "work_history": workHistoryData,
-        "education": educationData,
-        "certificates": certificatesData,
-        "volunteering": volunteeringData,
-        "awards": awardsData,
-        "publications": publicationsData,
-        "membership": membershipData,
-        "patents": patentsData,
-        "skills": ["Web Development", "Web Designing"],
-        "cover_letter": coverletterData
-    }  
+  // const downloadCVHandler = async () => {
+  //   const data = {
+  //       "first_name": personalInfoData?.first_name,
+  //       "last_name": personalInfoData?.last_name,
+  //       "phone": personalInfoData?.phone,
+  //       "email": personalInfoData?.email,
+  //       "location": personalInfoData?.location,
+  //       "portfolio": personalInfoData?.portfolio,
+  //       "description": personalInfoData?.description,
+  //       "work_history": workHistoryData,
+  //       "education": educationData,
+  //       "certificates": certificatesData,
+  //       "volunteering": volunteeringData,
+  //       "awards": awardsData,
+  //       "publications": publicationsData,
+  //       "membership": membershipData,
+  //       "patents": patentsData,
+  //       "skills": ["Web Development", "Web Designing"],
+  //       "cover_letter": coverletterData
+  //   }  
 
-    console.log(data)
+  //   console.log(data)
 
-    const config =  {
-      headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      }
+  //   const config =  {
+  //     headers: {
+  //         'Content-Type': 'application/json',
+  //         'Access-Control-Allow-Origin': '*'
+  //       }
+  //     }
 
-    const response = await axios.post('http://localhost:5000/download_cv', data, config)
-    if(response.status === 200) {
-      const link = document.createElement("a");
-    import('../assets/file/resume.docx')
-    .then((module) =>{ 
-      link.href = module.default;
-      link.download = "file.docx";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    })
-    .catch((err) => console.log(err));
-    }
-  }
+  //   const response = await axios.post('http://localhost:5000/download_cv', data, config)
+  //   if(response.status === 200) {
+  //     const link = document.createElement("a");
+  //   import('../assets/file/resume.docx')
+  //   .then((module) =>{ 
+  //     link.href = module.default;
+  //     link.download = "file.docx";
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //   })
+  //   .catch((err) => console.log(err));
+  //   }
+  // }
 
 
 
@@ -189,7 +189,8 @@ const Client = () => {
 
             <div className="flex flex-col items-center gap-4 mt-4 text-grey">
               <span>Save</span>
-              <button onClick={downloadCVHandler}>Download CV</button>
+              {/* <button onClick={downloadCVHandler}>Download CV</button> */}
+              <button>Download CV</button>
             </div>
           </div>
         </div>
