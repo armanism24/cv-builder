@@ -74,7 +74,7 @@ const Client = () => {
         }
       }
 
-    const response = await axios.post('http://127.0.0.1:5000/download_cv', data, config)
+    const response = await axios.post('http://0.0.0.0:5000/download_cv', data, config)
     if(response.status === 200) {
       const link = document.createElement("a");
     import('../assets/file/resume.docx')
