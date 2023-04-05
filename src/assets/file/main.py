@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, make_response, jsonify
+# from flask import Flask, request, make_response, jsonify
 from docx import Document
 import json
 from docx.enum.text import WD_TAB_ALIGNMENT, WD_PARAGRAPH_ALIGNMENT, WD_LINE_SPACING, WD_COLOR_INDEX, WD_BREAK
@@ -9,10 +9,11 @@ from docx.shared import Pt, RGBColor
 from htmldocx import HtmlToDocx
 from flask_cors import CORS
 import time
+import sys
 
 
-app = Flask(__name__)
-CORS(app)
+# app = Flask(__name__)
+# CORS(app)
 
 def insertHR(paragraph):
     p = paragraph._p  # p is the <w:p> XML element
@@ -36,12 +37,12 @@ def insertHR(paragraph):
     # paragraph.style.font.size = Pt(5)
 
 
-@app.route('/download_cv', methods=['POST'])
-def download_docx():
+# @app.route('/download_cv', methods=['POST'])
+def download_docx(data):
     # create a new document
 
     # from data import data  # hardcoded data
-    data = json.loads(request.data)  # API data
+    # data = json.loads(request.data)  # API data
 
     doc = Document()
     new_parser = HtmlToDocx()
@@ -199,11 +200,14 @@ def download_docx():
         doc.add_paragraph()
 
     file_path = r'resume.docx'
-    os.remove(file_path)
+    if os.path.isfile(file_path):
+        os.remove(file_path)
     doc.save(file_path)
-    response = {'link': 'file://'+os.path.abspath(file_path)}
-    return jsonify(response), 200
+    # response = {'link': 'file://'+os.path.abspath(file_path)}
+    # return jsonify(response)
+    return 'file://'+os.path.abspath(file_path)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    output = download_docx(json.loads(sys.argv[1]))
+    print(output)
